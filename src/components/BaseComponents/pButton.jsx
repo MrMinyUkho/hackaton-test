@@ -1,19 +1,17 @@
-import { Component,  } from 'react'
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
+import styles from "./PButton.module.scss";
 
-export class PButton extends Component {
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        return (
-            <button>{this.props.name}</button>
-        )
-    }
-}
-
-PButton.propTypes = {
-    name: PropTypes.string.isRequired
+const PButton = ({ name, onClick }) => {
+    return (
+        <button className={styles.button} onClick={onClick}>
+            {name}
+        </button>
+    );
 };
 
-export default PButton
+PButton.propTypes = {
+    name: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired
+};
+
+export default PButton;

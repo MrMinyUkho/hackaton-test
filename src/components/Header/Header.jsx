@@ -1,12 +1,24 @@
-import { Component } from 'react'
-import PButton from '../BaseComponents/pButton'
+import { useNavigate } from "react-router-dom";
+import Logo from "../BaseComponents/Logo";
+import Dropdown from "../BaseComponents/Dropdown";
+import Search from "../BaseComponents/Search";
+import PButton from "../BaseComponents/PButton";
+import styles from "./Header.module.scss";
 
-export class Header extends Component {
-    render() {
-        return (
-            <div>Header<PButton name="Реєстрація" action={() => alert("sdfdsfsdf")}/></div>
-        )
-    }
-}
+const Header = () => {
+    const navigate = useNavigate();
 
-export default Header
+    return (
+        <header className={styles.header}>
+            <Logo src="/logo.png" alt="Логотип" onClick={() => navigate("/")} />
+            <Dropdown
+                options={["Створити тест", "Створити картинку"]}
+                routes={["/create-test", "/create-image"]}
+            />
+            <Search />
+            <PButton name="Увійти" onClick={() => alert("Функція входу")} />
+        </header>
+    );
+};
+
+export default Header;
