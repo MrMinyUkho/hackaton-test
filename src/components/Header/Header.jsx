@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import PButton from '../BasicComponents/pButton'
+import PButton from '../BaseComponents/pButton'
 
 export class Header extends Component {
     render() {
