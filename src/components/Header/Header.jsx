@@ -1,22 +1,24 @@
-import { Component } from 'react'
-import PButton from '../BaseComponents/pButton'
-import Dropdown from '../BaseComponents/Dropdown'
-import styles from'./Header.module.scss'
+import { useNavigate } from "react-router-dom";
+import Logo from "../BaseComponents/Logo";
+import Dropdown from "../BaseComponents/Dropdown";
+import Search from "../BaseComponents/Search";
+import PButton from "../BaseComponents/PButton";
+import styles from "./Header.module.scss";
 
-export class Header extends Component {
-    render() {
-        return (
-            <div id={styles["header"]}>
-                Header
-                <Dropdown
-                    options={["Выберите", "Опция 1", "Опция 2", "Опция 3", "Опция 4", "Опция 5"]}
-                    onSelect={(value) => console.log("Вы выбрали:", value)}
-                />
-                <PButton name="Реєстрація" action={() => alert("sdfdsfsdf")}/>
+const Header = () => {
+    const navigate = useNavigate();
 
-            </div>
-        )
-    }
-}
+    return (
+        <header className={styles.header}>
+            <Logo src="/logo.png" alt="Логотип" onClick={() => navigate("/")} />
+            <Dropdown
+                options={["Створити тест", "Створити картинку"]}
+                routes={["/create-test", "/create-image"]}
+            />
+            <Search />
+            <PButton name="Увійти" onClick={() => alert("Функція входу")} />
+        </header>
+    );
+};
 
-export default Header
+export default Header;
