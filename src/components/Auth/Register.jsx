@@ -1,179 +1,137 @@
-import { useState } from "react";
-import axios from "axios";
+import { useState } from 'react';
+import axios from 'axios';
 
 const Register = () => {
-    // Состояния для хранения данных формы (поля регистрации).
-    const [formData, setFormData] = useState({
-        first_name: "",
-        last_name: "",
-        email: "",
-        password: "",
-        confirm_password: "",
-        phone: "",
-        birth_year: "",
-        role: "student", // По умолчанию "Ученик"
+    // Создаём состояние для данных формы
+    const [formDataState, setFormDataState] = useState({
+        first_name: '',
+        last_name: '',
+        email: '',
+        password: '',
+        confirm_password: '',
+        phone: '',
+        birth_year: '',
+        role: 'student', // значение по умолчанию
     });
 
-    // Состояние для сообщения об успешной/неуспешной регистрации.
-    const [responseMessage, setResponseMessage] = useState("");
+    const [responseMessage, setResponseMessage] = useState('');
 
-    // Функция обработки изменений в полях формы.
+    // Функция для обработки изменений в полях ввода
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
+        const { name, value } = e.target; // Деструктурируем name и value из input
+        setFormDataState((prevState) => ({
+            ...prevState,
+            [name]: value, // Обновляем только нужное поле
+        }));
     };
 
-    // Функция обработки отправки формы.
+    // Функция для обработки отправки формы
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Предотвращает перезагрузку страницы по умолчанию.
+        e.preventDefault(); // Отменяем стандартное поведение формы
 
         try {
-            // Формируем запрос на сервер с action "register".
-            const response = await axios.post("http://localhost:40/projectJS/login.php", {
-                ...formData,
-                action: "register", // Указываем действие "register".
-            });
+            // Создаём FormData и передаём значения из formDataState
+            const formData = new FormData();
+            Object.entries({
+                ...formDataState, // Используем состояние формы
+                action: 'register', // Добавляем action
+            }).forEach(([key, value]) => formData.append(key, value));
 
-            // Устанавливаем сообщение из ответа сервера.
-            setResponseMessage(response.data.message);
+            console.log('Отправляемые данные:', Object.fromEntries(formData.entries()));
 
-            // Если успешная регистрация, очищаем форму.
-            if (response.data.success) {
-                setFormData({
-                    first_name: "",
-                    last_name: "",
-                    email: "",
-                    password: "",
-                    confirm_password: "",
-                    phone: "",
-                    birth_year: "",
-                    role: "student",
-                });
-            }
+            const response = await axios.post(
+                'http://localhost:40/projectJS/login.php', // Адрес вашего API
+                formData,
+                {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                }
+            );
+
+            console.log('Ответ сервера:', response.data);
+            setResponseMessage(response.data.message); // Показываем сообщение от сервера
         } catch (error) {
-            console.error("Ошибка при отправке данных:", error);
-            setResponseMessage("Ошибка соединения с сервером. Попробуйте снова.");
+            console.error('Ошибка запроса:', error?.response?.data || error.message);
+            setResponseMessage('Ошибка соединения с сервером. Попробуйте снова.');
         }
     };
 
     return (
-        <div>
-            <h2>Регистрация</h2>
-            <form onSubmit={handleSubmit}>
-                {/* Поле ввода имени */}
-                <label>
-                    Имя:
-                    <input
-                        type="text"
-                        name="first_name"
-                        value={formData.first_name}
-                        onChange={handleChange}
-                        required
-                    />
-                </label>
-                <br />
-
-                {/* Поле ввода фамилии */}
-                <label>
-                    Фамилия:
-                    <input
-                        type="text"
-                        name="last_name"
-                        value={formData.last_name}
-                        onChange={handleChange}
-                        required
-                    />
-                </label>
-                <br />
-
-                {/* Поле ввода электронной почты */}
-                <label>
-                    Эл. почта:
-                    <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                    />
-                </label>
-                <br />
-
-                {/* Поле ввода пароля */}
-                <label>
-                    Пароль:
-                    <input
-                        type="password"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        required
-                    />
-                </label>
-                <br />
-
-                {/* Поле подтверждения пароля */}
-                <label>
-                    Подтверждение пароля:
-                    <input
-                        type="password"
-                        name="confirm_password"
-                        value={formData.confirm_password}
-                        onChange={handleChange}
-                        required
-                    />
-                </label>
-                <br />
-
-                {/* Поле ввода номера телефона */}
-                <label>
-                    Номер телефона:
-                    <input
-                        type="text"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                    />
-                </label>
-                <br />
-
-                {/* Поле ввода года рождения */}
-                <label>
-                    Год рождения:
-                    <input
-                        type="number"
-                        name="birth_year"
-                        value={formData.birth_year}
-                        onChange={handleChange}
-                        required
-                    />
-                </label>
-                <br />
-
-                {/* Выбор роли пользователя */}
-                <label>
-                    Выберите роль:
-                    <select
-                        name="role"
-                        value={formData.role}
-                        onChange={handleChange}
-                        required
-                    >
-                        <option value="student">Ученик</option>
-                        <option value="teacher">Учитель</option>
-                    </select>
-                </label>
-                <br />
-
-                <button type="submit">Зарегистрироваться</button>
-            </form>
-
-            {/* Отображение сообщения об успешной/неуспешной регистрации */}
+        <form onSubmit={handleSubmit}>
+            <label>
+                Имя:
+                <input
+                    type="text"
+                    name="first_name"
+                    value={formDataState.first_name}
+                    onChange={handleChange} // Обновляем состояние при изменении
+                />
+            </label>
+            <label>
+                Фамилия:
+                <input
+                    type="text"
+                    name="last_name"
+                    value={formDataState.last_name}
+                    onChange={handleChange}
+                />
+            </label>
+            <label>
+                Email:
+                <input
+                    type="email"
+                    name="email"
+                    value={formDataState.email}
+                    onChange={handleChange}
+                />
+            </label>
+            <label>
+                Пароль:
+                <input
+                    type="password"
+                    name="password"
+                    value={formDataState.password}
+                    onChange={handleChange}
+                />
+            </label>
+            <label>
+                Подтверждение пароля:
+                <input
+                    type="password"
+                    name="confirm_password"
+                    value={formDataState.confirm_password}
+                    onChange={handleChange}
+                />
+            </label>
+            <label>
+                Телефон:
+                <input
+                    type="text"
+                    name="phone"
+                    value={formDataState.phone}
+                    onChange={handleChange}
+                />
+            </label>
+            <label>
+                Год рождения:
+                <input
+                    type="text"
+                    name="birth_year"
+                    value={formDataState.birth_year}
+                    onChange={handleChange}
+                />
+            </label>
+            <label>
+                Роль:
+                <select name="role" value={formDataState.role} onChange={handleChange}>
+                    <option value="student">Студент</option>
+                    <option value="teacher">Учитель</option>
+                </select>
+            </label>
+            <button type="submit">Зарегистрироваться</button>
             {responseMessage && <p>{responseMessage}</p>}
-        </div>
+        </form>
     );
 };
 

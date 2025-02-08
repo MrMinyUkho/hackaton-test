@@ -1,16 +1,16 @@
-import './App.scss'
-import './scss/main.scss'
-
-import PButton from './components/BaseComponents/pButton'
-import Header from './components/Header/Header'
+// App.jsx
+import Login from './components/Auth/Login.jsx';
+import Register from './components/Auth/Register.jsx';
 
 function App() {
     return (
         <div>
-            <Header/>
-            <PButton name="аывоадывоыдва"/>
+            <h1>Welcome to the Application</h1>
+            {/* Рендеринг компонентов */}
+            <Login />
+            <Register />
         </div>
-    )
+    );
 }
 
-export default App
+export default App;
