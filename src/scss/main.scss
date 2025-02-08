@@ -1,5 +1,14 @@
-$color: rgba(52, 41, 143, 0.58);
+// src/scss/main.scss
+.home-page {
+    text-align: center;
+    margin-top: 50px;
 
-body {
-    background-color: $color;
+    &__title {
+        font-family: 'Arial', sans-serif;
+        font-size: 3em;
+        color: #34495e;
+        display: inline-block;
+        margin-top: 5px;
+        text-align: center; /* Центрування тексту по горизонталі */
+    }
 }

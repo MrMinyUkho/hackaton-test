@@ -7,16 +7,20 @@
     font-family: Arial, sans-serif;
 
     &__button {
-        width: fit-content;
-        height: 100%;
-        padding: 0px 1em;
+        display: inline-flex; // Используем flex для выравнивания
+        justify-content: center; // Центрируем содержимое
+        align-items: center; // Центрируем содержимое по вертикали
+        width: 100%; // Задаем ширину кнопки 100% относительно контейнера
+        height: 50px; // Фиксированная высота
+        padding: 0px 2em; // Увеличиваем горизонтальные отступы
         border: 0px;
         background-color: #0000;
         cursor: pointer;
         text-align: center;
+        font-size: 2.5em; // Увеличиваем размер шрифта
         transition: background 0.3s ease-in-out;
         box-sizing: border-box;
-
+        user-select: none; // Забороняємо виділення тексту в меню
         &:hover {
             background-color: #e0e0e0;
         }
@@ -24,21 +28,24 @@
 
     &__menu {
         position: absolute;
-        top: 90%; // Размещаем под кнопкой
+        top: 100%; // Размещаем под кнопкой
         left: 0;
-        //width: fit-content; // Совпадает с кнопкой
+        display: flex;
+        flex-direction: column; // Элементы меню по вертикали
         background: white;
         border: 1px solid #ccc;
         border-top: none;
         border-radius: 5px 5px 12px 12px;
         box-shadow: 4px 8px 14px rgba(0, 0, 0, 0.1);
         z-index: 35;
+        width: 100%; // Задаем ширину меню на уровне кнопки
         max-height: 0;
         overflow: hidden;
         opacity: 0;
         transform: scaleY(0);
         transform-origin: top;
         transition: max-height 0.3s ease-out, opacity 0.3s ease-out, transform 0.3s ease-out;
+        user-select: none; // Забороняємо виділення тексту в меню
     }
 
     &__menu.open {
@@ -50,6 +57,7 @@
     &__item {
         padding: vars.$padding vars.$padding*4;
         cursor: pointer;
+        font-size: 2.0em; // Увеличиваем размер шрифта для элементов меню
         transition: background 0.3s ease-in-out;
 
         &:hover {

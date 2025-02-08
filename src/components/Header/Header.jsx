@@ -16,8 +16,10 @@ const Header = () => {
                 routes={["/create-test", "/create-image"]}
             />
             <Search />
-            <PButton name="Увійти" onClick={() => alert("Функція входу")} />
+            <PButton name="Увійти" onClick={() => navigate("/login")} />
         </header>
+
+
     );
 };
 
