@@ -26,7 +26,9 @@ const Dropdown = ({ options, onSelect }) => {
                             className={styles.dropdown__item}
                             onClick={() => handleSelect(option)}
                         >
-                            {option}
+                            {
+                                option.replace(" ", "\u00A0") // Костыль добавляющий неразрывный пробел для корректного отображения списка
+                            }
                         </li>
                     ))}
             </ul>

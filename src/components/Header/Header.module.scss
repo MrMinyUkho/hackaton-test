@@ -1,0 +1,9 @@
+@use '/src/scss/variables.scss' as vars;
+@use '/src/scss/defaults.scss';
+
+#header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: vars.$mainfg;
+}
