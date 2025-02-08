@@ -1,3 +1,13 @@
-@use '/src/scss/variables.scss' as vars;
-@use '/src/scss/defaults.scss';
+.button {
+  padding: 10px 20px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
 
+  &:hover {
+    background: #0056b3;
+  }
+}

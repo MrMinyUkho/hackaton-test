@@ -21,7 +21,7 @@ const Dropdown = ({ options, routes }) => {
                 <ul className={`${styles.dropdown__menu} ${isOpen ? styles.open : ""}`}>
                     {options.map((option, index) => (
                         <li key={index} className={styles.dropdown__item} onClick={() => handleSelect(routes[index])}>
-                            {option}
+                            {option.replace(" ", "\u00A0")}
                         </li>
                     ))}
                 </ul>
