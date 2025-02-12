@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+        
+        </title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/styles/main.css">
+        <link rel="icon" href="/media/favicon.svg">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="scripts/main.js" defer></script>
+    </head>
+
+    <body>
+        <div id="header">
+            <div class="logofont" id="logo">QuickQuiz</div>
+            <div style="width: 4em;"></div>
+            <div style="margin-left: auto;"></div>
+            <input id="search-field" type="text" placeholder="Пошук тестів...">
+            <div style="margin-left: auto;"></div>
+            <div style="width: 4em;"></div>
+            <button id="overlay-show">Увійти</button>
+            <img id="profile-photo" src="media/defaultUserIco.svg">
+        </div>
+
+        <div id="test-find">
+            <button id="goto-create-test">Створити свій  тест</button>
+            <div id="category-list" style="display: none;">
+                <div class="category" id="cat-1">asdfasfsd</div>
+                <div class="category" id="cat-2">asdfasfsd</div>
+                <div class="category" id="cat-3">asdfasfsd</div>
+                <div class="category category-selected" id="cat-4">asdfasfsd</div>
+                <div class="category" id="cat-5">asdfasfsd</div>
+                <div class="category" id="cat-6">asdfasfsd</div>
+                <div class="category" id="cat-7">asdfasfsd</div>
+                <div class="category" id="cat-8">asdfasfsd</div>
+                <div class="category" id="cat-10">asdfasfsd</div>
+                <div class="category" id="cat-10">asdfasfsd</div>
+                <div class="category" id="cat-10">asdfasfsd</div>
+                <div class="category" id="cat-10">asdfasfsd</div>
+                <div class="category" id="cat-10">asdfasfsd</div>
+                <div class="category" id="cat-10">asdfasfsd</div>
+            </div>
+            <div id="test-list">
+
+            </div>
+        </div>
+
+        <div id="pass-test">
+            <div id="pass-test-header" style="display: none;">
+                <div id="pass-test-progress-bar"> 5m </div>
+            </div>
+            <div id="pass-test-task-holder">
+                <div class="pass-test-task">
+                    <p class="pass-test-task-question">Radio button</p>
+                    <p>
+                        <input type="radio" id="contactChoice1" name="task1"/>
+                        <label for="contactChoice1">Radio1</label>
+                    </p>
+                    <p>
+                        <input type="radio" id="contactChoice2" name="task1"/>
+                        <label for="contactChoice2">Radio2</label>
+                    </p>
+                    <p>
+                        <input type="radio" id="contactChoice3" name="task1"/>
+                        <label for="contactChoice3">Radio3</label>
+                    </p>
+                    <p>
+                        <input type="radio" id="contactChoice4" name="task1"/>
+                        <label for="contactChoice4">Radio4</label>
+                    </p>
+                </div>
+                <div class="pass-test-task">
+                    <p class="pass-test-task-question">Radio button</p>
+                    <p>
+                        <input type="checkbox" id="contactChoice1" name="task1"/>
+                        <label for="contactChoice1">Radio1</label>
+                    </p>
+                    <p>
+                        <input type="checkbox" id="contactChoice2" name="task1"/>
+                        <label for="contactChoice2">Radio2</label>
+                    </p>
+                    <p>
+                        <input type="checkbox" id="contactChoice3" name="task1"/>
+                        <label for="contactChoice3">Radio3</label>
+                    </p>
+                    <p>
+                        <input type="checkbox" id="contactChoice4" name="task1"/>
+                        <label for="contactChoice4">Radio4</label>
+                    </p>
+                </div>
+            </div>
+            <button id="pass-test-submit">Відправити</button>
+        </div>
+
+        <div id="create-test">
+            <div id="create-test-header">
+                <input id="create-test-name" type="text" placeholder="Назва тесту">
+                <button id="create-test-confirm">Створити тест</button>
+                <div id="create-test-progress-bar" style="display: none;"> 5m </div>
+            </div>
+            <div id="create-test-task-holder">
+                <div class="create-test-task">
+                    <p class="create-test-task-question"><input type="text"  placeholder="Введіть питання"></p>
+                    <p>
+                        <input type="checkbox" id="contactChoice1" name="task1"/>
+                        <input type="text" placeholder="Введіть відповідь">
+                        <button class="answer-remove">Видалити відповідь</button>
+                    </p>
+                    <p>
+                        <input type="checkbox" id="contactChoice2" name="task1"/>
+                        <input type="text" placeholder="Введіть відповідь">
+                        <button class="answer-remove">Видалити відповідь</button>
+                    </p>
+                    <p>
+                        <input type="checkbox" id="contactChoice3" name="task1"/>
+                        <input type="text" placeholder="Введіть відповідь">
+                        <button class="answer-remove">Видалити відповідь</button>
+                    </p>
+                    <p>
+                        <input type="checkbox" id="contactChoice4" name="task1"/>
+                        <input type="text" placeholder="Введіть відповідь">
+                        <button class="answer-remove">Видалити відповідь</button>
+                    </p>
+                    <button class="answer-add">Додати відповідь</button>
+                    <button class="task-remove">Видалити питання</button>
+                </div>
+                <button class="task-add">Додати питання</button>
+            </div>
+        </div>
+
+        <div id="test-finish">
+            <div id="test-finish-mark-field">Оцінка тут</div>
+            <div id="test-finish-your-comment">
+                <input type="text" id="test-finish-your-comment-text" placeholder="Ваш коментар до тесту">
+                <div id="test-finish-your-comment-btn-mrk">
+                    <button id="add-comment">Додати коментар</button>
+                    <input type="number" min="1" max="5" value="5" id="test-finish-your-comment-mark">
+                </div>
+            </div>
+            <div id="test-finish-comments">
+
+            </div>
+        </div>
+
+        <div id="overlay">
+            <img id="overlay-close" class="hover-anim" src="media/close-ico.svg">
+            <div id="login-form" class="auth-form">
+                <input type="email" id="login-input-email" placeholder="Пошта">
+                <input type="password" id="login-input-password" placeholder="Пароль">
+                <button id="login-btn">Логін</button>
+            </div>
+            <div id="registration-form" class="auth-form">
+                <input type="email" id="registration-input-email" placeholder="Пошта">
+                <input type="password" id="registration-input-password" placeholder="Пароль">
+                <input type="password" id="registration-input-password-confirm" placeholder="Підтвердьте пароль">
+                <button id="registration-btn">Зареєструватись</button>
+            </div>
+            <button id="overlay-change-form">Немає акаунту?</button>
+        </div>
+
+        <div id="user-settings-overlay">
+            <img id="user-settings-overlay-close" class="hover-anim" src="media/close-ico.svg">
+            <img src="media/defaultUserIco.svg" id="user-settings-avatar">
+            <input id="user-settings-name" type="text" placeholder="Ім'я">
+            <input id="user-settings-lastname" type="text" placeholder="Прізвище">
+            <button id="user-settings-save">Зберігти зміни</button>
+            <div id="user-settings-tests-result">
+                Результати тестів будуть тут
+            </div>
+        </div>
+
+    </body>
+</html>

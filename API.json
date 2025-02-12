@@ -1,0 +1,95 @@
+{
+    "login": {
+        "request": {
+            "method": "login",
+            "data": {
+                "login": "login",
+                "password": "password"
+            }
+        },
+        "responce": [
+            {
+                "status": "ok",
+                "firstname": "string or none",
+                "lastname": "string or none",
+                "avatar-url": "string or none"
+            },
+            {
+                "status": "error",
+                "error": "string or none"
+            }
+        ]
+    },
+    "registration": {
+        "request": {
+            "method": "registration",
+            "data": {
+                "login": "login",
+                "password": "password"
+            }
+        },
+        "responce": [
+            {
+                "status": "ok"
+            },
+            {
+                "status": "error",
+                "error": "string or none"
+            }
+        ]
+    },
+    "category": {
+        "request": {
+            "method": "getcategories",
+            "data": { }
+        },
+        "responce": [
+            {
+                "status": "ok",
+                "categories": [
+                    {
+                        "id": "int", 
+                        "caption":"string",
+                        "color": ["int", "int", "int"]
+                    }
+                ]
+            },
+            {
+                "status": "error",
+                "error": "string or none"
+            }
+        ]
+    },
+    "test-list": {
+        "request": {
+            "method": "test-list",
+            "data": {
+                "search-filter": "string or none",
+                "category": "int or none",
+                "batch-size": "int",
+                "offset": "int"
+            }
+        },
+        "responce": [
+            {
+                "status": "ok",
+                "tests-head": [
+                    {
+                        "id": "int",
+                        "name": "string",
+                        "author": {
+                            "id": "int",
+                            "firstname": "string",
+                            "lastname": "string"
+                        },
+                        "tasksAmount": "int"
+                    }
+                ]
+            },
+            {
+                "status": "error",
+                "error": "string or none"
+            }
+        ]
+    }
+}

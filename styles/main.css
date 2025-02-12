@@ -1,0 +1,428 @@
+* {
+    --main-bg: rgb(218, 218, 218);
+    --alt-bg: rgb(255, 255, 255);
+    --accent-col: rgb(113, 214, 67);
+    
+    --header-bg: rgb(218, 218, 218);
+
+    --def-padding: 0.5rem;
+    --def-margin: 0.4rem;
+    --def-border-radius: 0.6rem;
+
+    --input-bg: rgb(194, 194, 194);
+
+    font-size: large;
+
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+
+    overflow-x: hidden;
+
+    transition: all var(--global-anim-time);
+}
+
+html {
+    background-color: var(--main-bg);
+}
+
+button {
+    overflow-y: hidden;
+    background-color: var(--accent-col);
+    padding: var(--def-padding);
+    border-radius: var(--def-border-radius);
+
+    color: rgb(255, 255, 255);
+
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */        
+}
+
+img {
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.hover-anim:hover, button:hover {
+    transform: scale(102%);
+}
+
+.hover-anim:active, button:active {
+    transform: scale(97%);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    background-color: var(--input-bg);
+    padding: var(--def-padding);
+    border-radius: var(--def-border-radius);
+    outline: 1px solid rgba(153, 153, 153, 0);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    outline: 1px solid rgb(153, 153, 153);
+}
+
+#header-logo {
+    height: 4em;
+}
+
+#header {
+    position: sticky;
+    top:0;
+    box-sizing: border-box;
+    padding: 0em 1em;
+    width: 100vw;
+    height: 3.5em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: space-between;
+    background-color: var(--alt-bg);
+}
+
+.logofont {
+    font-family: Verdana, sans-serif;
+    font-weight: bolder;
+    color: var(--accent-col);
+}
+
+#profile-photo {
+    height: 2.5em;
+    border-radius: calc(2.5em/2);
+}
+
+#overlay {
+    display: var(--overlay-display);
+    opacity: var(--overlay-opacity);
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(3px);
+    background-color: rgba(255, 255, 255, 0.568);
+}
+
+#overlay-close {
+    filter: opacity(60%);
+    width: 2em;
+    position: fixed;
+    right: calc(var(--def-margin)*2);
+    top: calc(var(--def-margin)*2);
+}
+
+#search-field {
+    width: 30vw;
+}
+
+.auth-form {
+    position: fixed;
+    box-sizing: border-box;
+    
+    width: 20em;
+    height: fit-content;
+    
+    top:50%;
+    left: calc(50% - 10em);
+    
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--def-padding);
+    background-color: var(--alt-bg);
+    border-radius: calc(var(--def-border-radius)*2);
+    padding: var(--def-padding);
+}
+
+#login-form {
+    transform: translateY(-50%) rotateX(var(--login-form-rotate));
+}
+
+#registration-form {
+    transform: translateY(-50%) rotateX(var(--registration-form-rotate));
+}
+
+#overlay-change-form {
+    position: fixed;
+    left:50vw;
+    top:75vh;
+    transform:translate(-50%, -50%);
+}
+
+#test-find {
+    margin-left: 10vw;
+    margin-left: 10vw;
+    width: 80vw;
+    box-sizing: border-box;
+    padding: var(--def-padding);
+}
+
+#category-list{
+    display: flex;
+    row-gap: var(--def-padding);
+    column-gap: var(--def-padding);
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: var(--def-padding);
+    padding-bottom: var(--def-padding);
+}
+
+.category {
+    padding: var(--def-padding);
+    background-color: var(--accent-col);
+    border-radius: var(--def-border-radius);
+    outline: 2px solid rgba(240, 248, 255, 0);
+    max-width: 20em;
+    min-width: 7em;
+    display: flex;
+    justify-content: center;
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */   
+}
+
+.category-selected {
+    outline: 2px solid var(--alt-bg);
+}
+
+#test-list {
+    padding: var(--def-padding);
+    border-radius: calc(var(--def-border-radius)*2);
+    display: flex;
+    row-gap: var(--def-margin);
+    flex-direction: column;
+    background-color: var(--alt-bg);
+    margin-top: var(--def-margin);
+}
+
+.test-list-row {
+    padding: var(--def-padding);
+    background-color: var(--main-bg);
+    border-radius: var(--def-border-radius);
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.start-pass-test {
+    display: var(--show-pass-test);
+    background-color: var(--accent-col);
+    background: url("../media/pass-test.svg");
+    background-position: center;
+    background-size: contain;
+    height: 1em;
+    background-repeat: no-repeat;
+}
+
+#pass-test-task-holder {
+    border-radius: calc(var(--def-border-radius)*2);
+    padding: var(--def-padding);
+    background-color: var(--alt-bg);
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--def-padding);
+}
+
+.pass-test-task {
+    border-radius: var(--def-border-radius);
+    padding: var(--def-padding);
+    background-color: var(--main-bg);
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--def-padding);
+}
+
+.pass-test-task-question {
+    padding: var(--def-padding);
+}
+
+#pass-test {
+    margin-left: 10vw;
+    margin-left: 10vw;
+    width: 80vw;
+    box-sizing: border-box;
+}
+
+#pass-test-progress-bar {
+    padding: var(--def-padding);
+    border-radius: calc(var(--def-border-radius)*2);
+    background: linear-gradient(90deg, var(--accent-col) 0%, var(--accent-col) var(--test-time-bar), var(--alt-bg) var(--test-time-bar));
+    margin-top: var(--def-margin);
+    margin-bottom: var(--def-margin);
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
+}
+
+#create-test-progress-bar {
+    padding: var(--def-padding);
+    border-radius: calc(var(--def-border-radius)*2);
+    background: linear-gradient(90deg, var(--accent-col) 0%, var(--accent-col) var(--create-time-bar), var(--alt-bg) var(--create-time-bar));
+    margin-top: var(--def-margin);
+    margin-bottom: var(--def-margin);
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
+}
+
+#create-test-task-holder {
+    border-radius: calc(var(--def-border-radius)*2);
+    padding: var(--def-padding);
+    background-color: var(--alt-bg);
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--def-padding);
+}
+
+#create-test {
+    margin-left: 10vw;
+    margin-left: 10vw;
+    width: 80vw;
+    box-sizing: border-box;
+}
+
+.create-test-task {
+    border-radius: var(--def-border-radius);
+    padding: var(--def-padding);
+    background-color: var(--main-bg);
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--def-padding);
+}
+
+.create-test-task {
+    padding: var(--def-padding);
+}
+
+#create-test-task {
+    margin-left: 10vw;
+    margin-left: 10vw;
+    width: 80vw;
+    box-sizing: border-box;
+}
+
+#create-test-task {
+    padding: var(--def-padding);
+    border-radius: calc(var(--def-border-radius)*2);
+    background: linear-gradient(90deg, var(--accent-col) 0%, var(--accent-col) var(--test-time-bar), var(--alt-bg) var(--test-time-bar));
+    margin-top: var(--def-margin);
+    margin-bottom: var(--def-margin);
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
+}
+
+.task-remove {
+    background-color: brown;
+}
+
+.answer-remove {
+    background-color: brown;
+}
+
+#pass-test-submit {
+    margin: var(--def-padding);
+}
+
+#test-finish {
+    margin-left: 10vw;
+    margin-left: 10vw;
+    width: 80vw;
+    box-sizing: border-box;
+    margin-top: var(--def-padding);
+    padding: var(--def-padding);
+    background-color: var(--alt-bg);
+    border-radius: calc(var(--def-border-radius)*2);
+}
+
+#test-finish-mark-field {
+    padding: var(--def-padding);
+}
+
+#test-finish-your-comment {
+    display: flex;
+    flex-direction: column;
+}
+#test-finish-your-comment-btn-mrk {
+    display:flex;
+    flex-direction: row;
+    column-gap: var(--def-padding);
+    margin-top: var(--def-padding);
+}
+
+#test-finish-your-comment-mark {
+    padding: var(--def-padding);
+    border-radius: var(--def-border-radius);
+    background-color: var(--main-bg);
+}
+
+.comment {
+    border-radius: var(--def-border-radius);
+    padding: var(--def-padding);
+    background-color: var(--main-bg);
+    margin-top: var(--def-padding);
+}
+
+#user-settings-overlay {
+    display: var(--user-settings-overlay-display);
+    opacity: var(--user-settings-overlay-opacity);
+    position: fixed;
+    flex-direction: column;
+    padding-left: 30vw;
+    row-gap: var(--def-padding);
+    padding-top: 10vh;
+    padding-right: 30vw;
+    box-sizing: border-box;
+    top:0;
+    left:0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(3px);
+    background-color: rgba(255, 255, 255, 0.563);
+}
+
+#user-settings-avatar {
+    height: 10vw;
+    width: 10vw;
+    border-radius: 3em;
+}
+
+#user-settings-overlay-close {
+    filter: opacity(60%);
+    width: 2em;
+    position: fixed;
+    right: calc(var(--def-margin)*2);
+    top: calc(var(--def-margin)*2);
+}
+
+#user-settings-tests-result {
+    border-radius: var(--def-border-radius);
+    padding: var(--def-padding);
+    background-color: var(--main-bg);
+}
+
+#goto-create-test {
+    display: var(--show-pass-test);
+}
+
+#create-test-header{
+    padding: var(--def-padding);
+}
