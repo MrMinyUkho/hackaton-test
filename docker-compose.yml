@@ -1,0 +1,37 @@
+services:
+  site:
+    image: nginx
+    volumes:
+      - ./hackaton-test:/usr/share/nginx/html
+    ports:
+      - "7000:80"
+    networks:
+      - test-public
+
+  test-server:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    image: test-server
+    container_name: test-server
+    ports:
+      - "81:5000"
+    depends_on:
+      - db
+    networks:
+      - test-public
+
+  db:
+    image: mysql:8.0
+    container_name: test-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpw
+      - MYSQL_DATABASE=hackaton-test
+    volumes:
+      - .:/code
+    networks:
+      - test-public
+
+networks:
+  test-public:
